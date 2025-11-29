@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cardápio - Apenas Uma Pizza</title>  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ssstyle.css">
+</head>
+
+<body>
+
+    <button class="cart-icon" id="cart-toggle" aria-label="Abrir carrinho">
+    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+    <span id="cart-count">0</span>
+  </button>
+
+  <section class="cardapio-container">
+    <h1 class="titulo-principal">NOSSO CARDÁPIO</h1>
+    <p class="subtitulo">Todas as pizzas são feitas com ingredientes selecionados e muito sabor.</p>
+
+    <!-- TRADICIONAIS -->
+    <h2 class="categoria">PIZZAS TRADICIONAIS</h2>
+    <div class="grid-pizzas">
+
+      <div class="pizza-item">
+        <img src="Pizza_Mexicana.png" alt="Pizza Mexicana">
+        <h3>Mexicana</h3>
+        <p>Molho de tomate, mussarela, presunto, milho, frango, pimenta e orégano.</p>
+        <span class="preco">R$ 39,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Pizza_Portuguesa.png" alt="Pizza Portuguesa">
+        <h3>Portuguesa</h3>
+        <p>Molho de tomate, mussarela, presunto, ovo, cebola, pimentão e orégano.</p>
+        <span class="preco">R$ 39,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Pizza_Calabresa.png" alt="Pizza Calabresa">
+        <h3>Calabresa</h3>
+        <p>Molho de tomate, mussarela, calabresa fatiada e orégano.</p>
+        <span class="preco">R$ 39,90</span>
+      </div>
+
+    </div>
+
+    <!-- ESPECIAIS -->
+    <h2 class="categoria">PIZZAS ESPECIAIS</h2>
+    <div class="grid-pizzas">
+
+      <div class="pizza-item">
+        <img src="Pizza Salmão Cream Chease.png" alt="Salmão com Cream Chease">
+        <h3>Salmão com Cream Chease</h3>
+        <p>Salmão Fresco, Cream Chease, Queijo mussarela, especiarias e orégano.</p>
+        <span class="preco">R$ 49,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Pizza Quatro Queijos.png" alt="Quatro Queijos Especial">
+        <h3>Quatro Queijos Especial</h3>
+        <p>Mussarela, parmesão, gorgonzola, catupiry e toque especial da casa.</p>
+        <span class="preco">R$ 49,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Pizza Tomate Seco.png" alt="Pizza Tomate Seco">
+        <h3>Pizza Tomate Seco</h3>
+        <p>Mussarela, tomate seco, rúculo e orégano.</p>
+        <span class="preco">R$ 49,90</span>
+      </div>
+
+    </div>
+
+    <!-- MINI -->
+    <h2 class="categoria">MINI PIZZAS</h2>
+    <div class="grid-pizzas">
+
+      <div class="pizza-item">
+        <img src="Mini_Pizza_Carne_Seca.png" alt="Mini Carne Seca">
+        <h3>Mini Carne Seca</h3>
+        <p>Carne Seca Desfiada, Queijo e Orégano.</p>
+        <span class="preco">R$ 19,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Mini_Pizza_Salmão_com_Cream_Chease.png" alt="Mini Salmão">
+        <h3>Mini Salmão</h3>
+        <p>Salmão Fresco, Cream Chease, Queijo Mussarela, Especiarias e Orégano.</p>
+        <span class="preco">R$ 19,90</span>
+      </div>
+
+      <div class="pizza-item">
+        <img src="Mini_Tomate_Seco.png" alt="Mini Tomate Seco">
+        <h3>Mini Tomate Seco</h3>
+        <p>Mussarela, tomate seco, rúculo e orégano.</p>
+        <span class="preco">R$ 19,90</span>
+      </div>
+
+    </div>
+  </section>
+  
+ <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-logo">
+      <img src="logo_footer.png" alt="Logo Pizzaria Primo Tavares">
+    </div>
+
+    <nav class="footer-links">
+      <ul>
+        <li><a href="pizzaria.html">HOME</a></li>
+        <li><a href="#sobre">SOBRE</a></li>
+        <li><a href="#cardapio">CARDÁPIO</a></li>
+        <li><a href="#catalogo">CATÁLOGO</a></li>
+      </ul>
+    </nav>
+
+    <div class="social">
+      <a href="https://www.instagram.com/apenas.umapizza?igsh=MWc2azc0aWZ0ZXRxeA==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/seunumero" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+  </div>
+
+  <p class="copyright">
+    &copy; 2025 Apenas Uma Pizza. Todos os direitos reservados.
+  </p>
+
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</footer>
+
+  <aside id="cart" class="cart" aria-hidden="true">
+    <header class="cart-header">
+      <h2>Carrinho de Compras</h2>
+      <button class="close-cart" id="close-cart" aria-label="Fechar carrinho">&times;</button>
+    </header>
+
+    <!-- Container onde os itens serão inseridos pelo JS -->
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+      </div>
+      <button id="checkout-button" class="chekout-button">Finalizar compra</button>
+    </div>
+  </aside>
+  <!-- JS externo -->
+  <script src="script.js"></script>
+
+</body>
+</html>

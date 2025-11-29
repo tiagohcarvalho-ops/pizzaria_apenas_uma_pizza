@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apenas Uma Pizza</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+   <button class="cart-icon" id="cart-toggle" aria-label="Abrir carrinho">
+    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+    <span id="cart-count">0</span>
+  </button>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video autoplay muted loop playsinline class="video-bg">
+      <source src="video_promocional.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos em HTML5.
+    </video>
+
+    <div class="hero-content">
+      <div class="brand">
+        <img src="logo_ap.png" alt="Logo Apenas Uma Pizza" class="logo">
+        <div>
+          <h1>Apenas Uma Pizza?</h1>
+          <p class="slogan">Sabor que reúne</p>
+
+      <nav class="menu">
+        <a href="cardapio.html">Cardápio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="pagina-login.html">Login/cadastro</a>
+        <a href="#pedido" class="cta">Peça Agora</a>
+      </nav>
+    </div>
+  </section>
+
+  <!--Sessão do catalogo-->
+  <section class="catalogo" id="catalogo">
+    <h2> Algumas de Nossas Pizzas🍕 </h2>
+
+      <div class="catalog">
+
+      
+      <a href="cardapio.html">
+      <div class="card">
+        <div class="smoke"></div>
+         <img src="pizza_1.jpg" alt="Pizza 1">
+         <h3> Pizzas Tradicionais</h3>
+      </div>
+      </a>
+
+       
+      <a href="cardapio.html">
+      <div class="card">
+        <div class="smoke"></div>
+         <img src="pizza_2.jpg" alt="Pizza 2">
+         <h3> Pizzas Especias</h3>
+      </div>
+      </a>
+
+      <a href="cardapio.html">
+      <div class="card">
+        <div class="smoke"></div>
+         <img src="pizza_3.avif" alt="Pizza 3">
+         <h3> Mini Pizzas</h3>
+      </div>
+      </a>
+  </section>
+
+  <hr
+
+  <!--Efeito da fumaça-->
+  
+   <script>
+    document.querySelectorAll('.card').forEach(card => {
+      const smoke = card.querySelector('.smoke');
+
+      const triggerSmoke = () => {
+        card.classList.remove('smoking');
+        void card.offsetWidth; // reinicia a animação
+        card.classList.add('smoking');
+
+        smoke.addEventListener('animationend', () => {
+          card.classList.remove('smoking');
+        }, { once: true });
+      };
+
+      card.addEventListener('click', triggerSmoke);
+      card.addEventListener('touchstart', triggerSmoke);
+    });
+  </script>
+
+  <!-- INTRO -->
+  <section class="intro" id="sobre">
+    <div class="intro-container">
+      <div class="intro-logo">
+        <img src="logo_ap.png" alt="Logo Apenas Uma Pizza">
+      </div>
+
+      <div class="intro-text">
+        <h2>Nossa História</h2>
+        <h3 class="highlight">A melhor pizza artesanal</h3>
+        <p>
+          A Apenas Uma Pizza nasceu no início de 2025, criada por seis estudantes da Faculdade CCI
+          que decidiram transformar um projeto acadêmico em um sonho real. Unidos pela paixão pela
+          gastronomia e inovação, criaram um espaço onde cada fatia é feita com carinho e sabor.
+        </p>
+        <p class="quote">
+          A felicidade mora em um pedaço de pizza! 🍕  
+          Quer experimentar? Peça agora!
+        </p>
+
+        <a href="https://wa.me/seunumero" class="btn-pedido">Fazer pedido de Pizza</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-logo">
+      <img src="logo_footer.png" alt="Logo Pizzaria Primo Tavares">
+    </div>
+
+    <nav class="footer-links">
+      <ul>
+        <li><a href="pizzaria.html">HOME</a></li>
+        <li><a href="#sobre">SOBRE</a></li>
+        <li><a href="#cardapio">CARDÁPIO</a></li>
+        <li><a href="#catalogo">CATÁLOGO</a></li>
+      </ul>
+    </nav>
+
+    <div class="social">
+      <a href="https://www.instagram.com/apenas.umapizza?igsh=MWc2azc0aWZ0ZXRxeA==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/seunumero" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+  </div>
+
+  <p class="copyright">
+    &copy; 2025 Apenas Uma Pizza. Todos os direitos reservados.
+  </p>
+
+  <!-- FONT AWESOME (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</footer>
+
+  <aside id="cart" class="cart" aria-hidden="true">
+    <header class="cart-header">
+      <h2>Carrinho de Compras</h2>
+      <button class="close-cart" id="close-cart" aria-label="Fechar carrinho">&times;</button>
+    </header>
+
+    <!-- Container onde os itens serão inseridos pelo JS -->
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total: R$ <span id="cart-total">0.00</span></strong>
+      </div>
+      <button id="checkout-button" class="chekout-button">Finalizar compra</button>
+    </div>
+  </aside>
+  <!-- JS externo -->
+  <script src="script.js"></script>
+
+</body>
+</html>

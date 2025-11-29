@@ -1,0 +1,270 @@
+                <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recuperar senha — Pizzaria</title>
+
+  
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1: #5c0606;
+      --bg-2: #0f0801;
+      --accent: #ffb300;
+      --accent-2: #ffcc33;
+      --glass: rgba(0,0,0,0.38);
+      --white-70: rgba(255,255,255,0.85);
+      --max-width: 420px;
+      --radius: 12px;
+      --ff: "Poppins", system-ui, sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:var(--ff)}
+    html,body{height:100%}
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 60%);
+      background-position:center;
+      background-size:cover;
+      padding:24px;
+      color: #fff;
+    }
+
+    
+    .card{
+      width:100%;
+      max-width:var(--max-width);
+      background: rgba(10,10,10,0.25);
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      color:var(--white-70);
+    }
+
+    .brand {
+      text-align:center;
+      margin-bottom: 14px;
+    }
+    .brand .logo {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:20px;
+      color:var(--accent);
+      letter-spacing:0.6px;
+    }
+    .brand .logo i {font-size:26px}
+
+    h1 {
+      font-size:22px;
+      text-align:center;
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    p.lead {
+      text-align:center;
+      font-size:14px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom:20px;
+    }
+
+    form {
+      width:100%;
+    }
+
+    .input-group {
+      position:relative;
+      margin:18px 0;
+    }
+
+    .input-group input[type="email"]{
+      width:100%;
+      padding:12px 44px 12px 18px;
+      border-radius:999px;
+      border:2px solid rgba(255,255,255,0.12);
+      background: transparent;
+      color:#fff;
+      font-size:15px;
+      outline:none;
+      transition: box-shadow .18s, border-color .18s, transform .08s;
+    }
+
+    .input-group input::placeholder{
+      color: rgba(255,255,255,0.6);
+    }
+
+    .input-group i {
+      position:absolute;
+      right:16px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:18px;
+      color: rgba(255,255,255,0.9);
+      pointer-events:none;
+    }
+
+    .input-group input:focus{
+      border-color: var(--accent);
+      box-shadow: 0 6px 24px rgba(255,179,0,0.12);
+    }
+
+    .row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:6px;
+    }
+
+    .link-small {
+      font-size:13px;
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .link-small:hover { text-decoration:underline; }
+
+    .btn {
+      width:100%;
+      margin-top:16px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%);
+      color:#000;
+      font-weight:600;
+      font-size:15px;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:active{ transform: translateY(1px) scale(.998) }
+    .btn:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+    }
+
+    .help {
+      text-align:center;
+      margin-top:16px;
+      font-size:14px;
+      color: rgba(255,255,255,0.75);
+    }
+    .help a { color:var(--accent); font-weight:600; text-decoration:none; }
+    .help a:hover { text-decoration:underline; }
+
+    
+    .success {
+      display:none;
+      margin-top:14px;
+      border-radius:10px;
+      padding:16px;
+      background: linear-gradient(90deg, rgba(255,179,0,0.12), rgba(255,204,51,0.06));
+      border:1px solid rgba(255,179,0,0.12);
+      color: #fff;
+      text-align:center;
+      font-size:14px;
+    }
+
+    
+    @media (max-width:520px){
+      .card{ padding:20px }
+      h1{ font-size:20px }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="titulo">
+    <div class="brand" aria-hidden="true">
+      <div class="logo"><i class='bx bxs-pizza'></i> Apenas uma Pizza?</div>
+    </div>
+
+    <h1 id="titulo">Recupere sua senha</h1>
+    <p class="lead">Digite seu e-mail cadastrado que vamos enviar um link para redefinir sua senha.</p>
+
+    <form id="recuperarForm" novalidate>
+      <label class="input-group" for="email">
+        <input id="email" name="email" type="email" placeholder="seu-email@email.com" required aria-required="true" aria-describedby="emailHelp">
+        <i class='bx bx-envelope'></i>
+      </label>
+
+      <div class="row" style="margin-top:6px;">
+        <div style="font-size:13px;color:rgba(255,255,255,0.75)">Não lembra do email? <a class="link-small" href="#">fale com suporte</a></div>
+      </div>
+
+      <button class="btn" id="btnEnviar" type="submit">Enviar link de recuperação</button>
+
+      <div class="success" id="successBox" role="status" aria-live="polite">
+        <strong>Verifique seu e-mail!</strong>
+        <div id="successText" style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.9)">
+          Enviamos um link para redefinir sua senha. Caso não veja na caixa de entrada, verifique o spam.
+        </div>
+      </div>
+
+      <p class="help">Lembrou da senha? <a href="pagina-login.html">Voltar ao login</a></p>
+    </form>
+  </main>
+
+  <script>
+    
+    (function(){
+      const form = document.getElementById('recuperarForm');
+      const emailInput = document.getElementById('email');
+      const btn = document.getElementById('btnEnviar');
+      const successBox = document.getElementById('successBox');
+
+      function validaEmail(email){
+        
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        successBox.style.display = 'none';
+
+        const email = emailInput.value.trim();
+        if(!email || !validaEmail(email)){
+          emailInput.focus();
+          emailInput.style.borderColor = 'rgba(255,80,80,0.95)';
+          setTimeout(() => {
+            emailInput.style.borderColor = '';
+          }, 1600);
+          return;
+        }
+
+        
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        
+        try {
+          await new Promise(r => setTimeout(r, 1200));
+          
+          successBox.style.display = 'block';
+          
+          document.getElementById('successText').textContent = 'Enviamos um link para ' + email + '. Verifique seu e-mail (incluindo spam).';
+        } catch (err) {
+          alert('Ocorreu um erro ao tentar enviar. Tente novamente.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Enviar link de recuperação';
+        }
+      });
+
+      
+      emailInput.addEventListener('keypress', function(ev){
+        if(ev.key === 'Enter') form.requestSubmit();
+      });
+
+    })();
+  </script>
+</body>
+</html>
