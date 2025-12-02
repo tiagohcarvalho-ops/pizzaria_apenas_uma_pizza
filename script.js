@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartTotalEl = document.getElementById('cart-total');
   const checkoutBtn = document.getElementById('checkout-button');
 
-  let cart = [];
+  let cart = JSON.parse(localStorage.getItem('carrinho')) || [];
 
   function updateCartUI() {
 
     // atualiza contador visual
     const totalQty = cart.reduce((s, it) => s + it.qty, 0);
     if (cartCount) cartCount.textContent = totalQty;
-
+    
     // limpa container e renderiza
     if (!cartItemsContainer) return;
     cartItemsContainer.innerHTML = '';
@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = '<p class="empty-cart">Seu carrinho está vazio.</p>';
       if (cartTotalEl) cartTotalEl.textContent = '0,00';
+      return;
+
+       localStorage.setItem('carrinho', JSON.stringify(cart));
       return;
     }
 
@@ -46,11 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const total = cart.reduce((s, it) => s + (it.price * it.qty), 0);
     if (cartTotalEl) cartTotalEl.textContent = total.toFixed(2).replace('.', ',');
+
+   localStorage.setItem('carrinho', JSON.stringify(cart))
   }
 
-  // -------------------------
-  // Funções de abrir / fechar painel do carrinho
-  // -------------------------
+
+  // Funções de abrir / fechar painel do carrinho//
+
   function openCart() {
     if (!cartPanel) return;
     cartPanel.classList.add('open');
@@ -91,10 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // -------------------------
-  // Botão finalizar compra
-  // - monta resumo e abre WhatsApp (número de exemplo)
-  // -------------------------
+  // Botão finalizar compra//
+
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
       if (cart.length === 0) {
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = encodeURIComponent(`Olá, quero fazer um pedido:\n${lines.join('\n')}\nTotal: R$ ${total}`);
 
       // TODO: substitua pelo seu número no formato internacional (ex: 55 + DDD + número)
-      window.open(`https://wa.me/5591999999999?text=${message}`, '_blank');
+      window.open(`https://wa.me/61981185052?text=${message}`, '_blank');
     });
   }
   document.querySelectorAll('.card').forEach(card => {
@@ -157,6 +160,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --------------------- ADICIONAR AO CARRINHO PELOS BOTÕES DE PREÇO ---------------------
+document.querySelectorAll('.btn-adicionar').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const card = btn.closest('.pizza-item');
+    if (!card) return;
+
+    const nome = card.querySelector('h3')?.textContent.trim();
+    const img = card.querySelector('img')?.src;
+
+    let precoRaw = card.querySelector('.preco')?.textContent || '0';
+    precoRaw = precoRaw.replace('R$', '').replace(/\./g, '').replace(',', '.');
+    const preco = parseFloat(precoRaw);
+
+    // gera id simples
+    const id = nome.toLowerCase().replace(/\s+/g, '-') + '-' + preco;
+
+    const existente = cart.find(item => item.id === id);
+
+    if (existente) {
+      existente.qty++;
+    } else {
+      cart.push({
+        id,
+        name: nome,
+        price: preco,
+        qty: 1,
+        img
+      });
+    }
+
+    updateCartUI();
+    openCart(); // opcional: abre o carrinho ao adicionar
+  });
+});
+
   // Inicializa UI
   updateCartUI();
 });
+
