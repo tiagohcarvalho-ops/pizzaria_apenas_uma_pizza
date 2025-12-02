@@ -37,10 +37,7 @@ body{
 }
 
 
-/* =========================
-   CARRINHO - ÍCONE (TOPO ESQUERDO) + PAINEL LATERAL
-   Cole este bloco no style.css — de preferência logo após as regras da .hero/.video-bg
-   ========================= */
+/*CARRINHO - ÍCONE (TOPO ESQUERDO) + PAINEL LATERAL*/
 
 .cart-icon {
   position: fixed;       /* fixo na tela */
@@ -306,6 +303,21 @@ body{
   padding-top: 10px;
 }
 
+/* BOTÃO ADICIONAR AO CARRINHO */
+.btn-adicionar {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-adicionar .preco {
+  pointer-events: none; 
+}
+
 /* RESPONSIVO */
 @media (max-width: 768px) {
   .footer-container {
@@ -317,4 +329,3 @@ body{
     gap: 10px;
   }
 }
-
