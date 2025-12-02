@@ -209,7 +209,11 @@ body{
   color:#333;
   line-height:1.3;
   margin-bottom:12px;
-  min-height:38px;
+  height: 60px; 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 /* PREÇO */
@@ -313,3 +317,4 @@ body{
     gap: 10px;
   }
 }
+
