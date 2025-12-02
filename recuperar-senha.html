@@ -1,47 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Recuperar senha — Pizzaria</title>
+
+  <!-- CSS principal -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Ícones Boxicons -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Fonte (o @import também está no CSS, mas manter aqui garante fallback) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <header>
-    <button id="cart-toggle" aria-label="Abrir carrinho">
-      <i class='bx bx-shopping-bag'></i>
-      <span id="cart-count" aria-hidden="true">0</span>
-    </button>
-  </header>
-
-
-  <aside id="cart" aria-hidden="true" class="cart-panel">
-    <button id="close-cart" aria-label="Fechar carrinho">Fechar</button>
-
-    <div id="cart-items" class="cart-items">
+  <main class="card" role="main" aria-labelledby="titulo">
+    <div class="brand" aria-hidden="true">
+      <div class="logo"><i class='bx bxs-pizza'></i> Apenas uma Pizza?</div>
     </div>
 
-    <div class="cart-footer">
-      <div>Total: R$ <span id="cart-total">0,00</span></div>
-      <button id="checkout-button">Finalizar pedido</button>
-    </div>
-  </aside>
+    <h1 id="titulo">Recupere sua senha</h1>
+    <p class="lead">Digite seu e-mail cadastrado que vamos enviar um link para redefinir sua senha.</p>
 
-  <main>
+    <form id="recuperarForm" novalidate>
+      <label class="input-group" for="email">
+        <input id="email" name="email" type="email" placeholder="seu-email@email.com" required aria-required="true" aria-describedby="emailHelp">
+        <i class='bx bx-envelope'></i>
+      </label>
 
-    <section class="catalog">
-      <div class="card" data-id="1" data-price="29.90" data-name="Pizza Margherita" data-img="pizza_1.jpg">
-        <div class="smoke"></div>
-        <img src="pizza_1.jpg" alt="Pizza Margherita">
-        <h3>Pizzas Tradicionais</h3>
-        <button class="add-to-cart">Adicionar</button>
+      <div class="row">
+        <div class="row-help">Não lembra do email? <a class="link-small" href="#">Fale com suporte</a></div>
       </div>
-    </section>
+
+      <button class="btn" id="btnEnviar" type="submit">Enviar link de recuperação</button>
+
+      <div class="success" id="successBox" role="status" aria-live="polite">
+        <strong>Verifique seu e-mail!</strong>
+        <div id="successText" class="success-text">
+          Enviamos um link para redefinir sua senha. Caso não veja na caixa de entrada, verifique o spam.
+        </div>
+      </div>
+
+      <p class="help">Lembrou da senha? <a href="pagina-login.html">Voltar ao login</a></p>
+    </form>
   </main>
 
-  <script src="script.js" defer></script>
+  <script>
+    (function(){
+      const form = document.getElementById('recuperarForm');
+      const emailInput = document.getElementById('email');
+      const btn = document.getElementById('btnEnviar');
+      const successBox = document.getElementById('successBox');
+
+      function validaEmail(email){
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        successBox.style.display = 'none';
+
+        const email = emailInput.value.trim();
+        if(!email || !validaEmail(email)){
+          emailInput.focus();
+          emailInput.style.borderColor = 'rgba(255,80,80,0.95)';
+          setTimeout(() => {
+            emailInput.style.borderColor = '';
+          }, 1600);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        try {
+          // Simula envio (substitua por chamada fetch para sua API)
+          await new Promise(r => setTimeout(r, 1200));
+
+          successBox.style.display = 'block';
+          document.getElementById('successText').textContent = 'Enviamos um link para ' + email + '. Verifique seu e-mail (incluindo spam).';
+        } catch (err) {
+          alert('Ocorreu um erro ao tentar enviar. Tente novamente.');
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Enviar link de recuperação';
+        }
+      });
+
+      emailInput.addEventListener('keypress', function(ev){
+        if(ev.key === 'Enter') form.requestSubmit();
+      });
+
+    })();
+  </script>
 </body>
 </html>
