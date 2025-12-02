@@ -175,4 +175,173 @@ form > div:last-of-type p a:hover {
   font-size: 30px;
   color: #ffb300 !important; /* garante que o ícone também seja dourado */
 }
+/* Recuperação de Senha */
+  :root{
+      --bg-1: #0a4f1a;
+      --bg-2: #0c5a1f;
+      --accent: #ffb300;
+      --accent-2: #ffcc33;
+      --glass: rgba(0,0,0,0.38);
+      --white-70: rgba(255,255,255,0.85);
+      --max-width: 420px;
+      --radius: 12px;
+      --ff: "Poppins", system-ui, sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:var(--ff)}
+    html,body{height:100%}
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 60%);
+      background-position:center;
+      background-size:cover;
+      padding:24px;
+      color: #fff;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--max-width);
+      background: rgba(10,10,10,0.25);
+      border: 2px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      color:var(--white-70);
+    }
+
+    .brand {
+      text-align:center;
+      margin-bottom: 14px;
+    }
+    .brand .logo {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:20px;
+      color:var(--accent);
+      letter-spacing:0.6px;
+    }
+    .brand .logo i {font-size:26px}
+
+    h1 {
+      font-size:22px;
+      text-align:center;
+      margin-bottom:10px;
+      color:#fff;
+    }
+
+    p.lead {
+      text-align:center;
+      font-size:14px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom:20px;
+    }
+
+    form {
+      width:100%;
+    }
+
+    .input-group {
+      position:relative;
+      margin:18px 0;
+    }
+
+    .input-group input[type="email"]{
+      width:100%;
+      padding:12px 44px 12px 18px;
+      border-radius:999px;
+      border:2px solid rgba(255,255,255,0.12);
+      background: transparent;
+      color:#fff;
+      font-size:15px;
+      outline:none;
+      transition: box-shadow .18s, border-color .18s, transform .08s;
+    }
+
+    .input-group input::placeholder{
+      color: rgba(255,255,255,0.6);
+    }
+
+    .input-group i {
+      position:absolute;
+      right:16px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:18px;
+      color: rgba(255,255,255,0.9);
+      pointer-events:none;
+    }
+
+    .input-group input:focus{
+      border-color: var(--accent);
+      box-shadow: 0 6px 24px rgba(255,179,0,0.12);
+    }
+
+    .row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:6px;
+    }
+
+    .link-small {
+      font-size:13px;
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .link-small:hover { text-decoration:underline; }
+
+    .btn {
+      width:100%;
+      margin-top:16px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:none;
+      background: linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%);
+      color:#000;
+      font-weight:600;
+      font-size:15px;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:active{ transform: translateY(1px) scale(.998) }
+    .btn:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+    }
+
+    .help {
+      text-align:center;
+      margin-top:16px;
+      font-size:14px;
+      color: rgba(255,255,255,0.75);
+    }
+    .help a { color:var(--accent); font-weight:600; text-decoration:none; }
+    .help a:hover { text-decoration:underline; }
+
+    
+    .success {
+      display:none;
+      margin-top:14px;
+      border-radius:10px;
+      padding:16px;
+      background: linear-gradient(90deg, rgba(255,179,0,0.12), rgba(255,204,51,0.06));
+      border:1px solid rgba(255,179,0,0.12);
+      color: #fff;
+      text-align:center;
+      font-size:14px;
+    }
+
+    
+    @media (max-width:520px){
+      .card{ padding:20px }
+      h1{ font-size:20px }
+    }
 
