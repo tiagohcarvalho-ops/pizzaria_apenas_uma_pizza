@@ -15,7 +15,7 @@ body{
     min-height: 100vh;
     margin:0;
     font-family:var(--ff-sans);
-    background: linear-gradient(180deg,#5c0606 0%, #0f0801 60%);
+    background: linear-gradient(180deg,#0a4f1a 0%, #0f6b25 60%);
     background-position: center;
     background-size: cover;
 }
@@ -344,4 +344,5 @@ form > div:last-of-type p a:hover {
       .card{ padding:20px }
       h1{ font-size:20px }
     }
+
 
