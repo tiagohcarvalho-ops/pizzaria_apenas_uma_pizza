@@ -23,5 +23,5 @@ Interações básicas com JavaScript
 # 🚀 Como Executar
 
 Faça o download ou clone este repositório:
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/tiagohcarvalho-ops/pizzaria_apenas_uma_pizza.git
 Abra o arquivo index.html no navegador.
