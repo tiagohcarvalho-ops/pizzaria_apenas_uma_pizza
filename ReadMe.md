@@ -6,7 +6,9 @@ O sistema consiste em um site estático para uma pizzaria fictícia chamada Apen
 # ⚙️ Tecnologias Utilizadas
 
 HTML5
+
 CSS3
+
 JavaScript
 
 # 📋 Objetivo do Projeto
@@ -20,6 +22,7 @@ Página inicial da pizzaria
 Cardápio de pizzas
 
 Layout responsivo
+
 Interações básicas com JavaScript
 
 # 🚀 Como Executar
