@@ -16,12 +16,16 @@ O objetivo do projeto é praticar conceitos de desenvolvimento web front-end, ut
 # 🖥️ Funcionalidades
 
 Página inicial da pizzaria
+
 Cardápio de pizzas
+
 Layout responsivo
 Interações básicas com JavaScript
 
 # 🚀 Como Executar
 
 Faça o download ou clone este repositório:
+
 git clone https://github.com/tiagohcarvalho-ops/pizzaria_apenas_uma_pizza.git
+
 Abra o arquivo index.html no navegador.
