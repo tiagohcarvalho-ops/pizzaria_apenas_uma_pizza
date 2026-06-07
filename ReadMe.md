@@ -25,10 +25,6 @@ Layout responsivo
 
 Interações básicas com JavaScript
 
-# 🚀 Como Executar
+# 🚀 Veja o Projeto Online
 
-Faça o download ou clone este repositório:
-
-git clone https://github.com/tiagohcarvalho-ops/pizzaria_apenas_uma_pizza.git
-
-Abra o arquivo index.html no navegador.
+Site -> https://tiagohcarvalho-ops.github.io/pizzaria_apenas_uma_pizza/
