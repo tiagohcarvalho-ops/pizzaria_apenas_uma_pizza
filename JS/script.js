@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = card.dataset.id || String(Date.now());
       const name = card.dataset.name || card.querySelector('h3')?.textContent?.trim() || 'Produto';
       const price = parseFloat(card.dataset.price || '0') || 0;
-      const img = card.dataset.img || card.querySelector('img')?.getAttribute('src') || '';
+      const img = card.dataset.img || card.querySelector('img')?.src || '';
 
       // se já existe, incrementa qty; senão, adiciona novo
       const existing = cart.find(i => i.id === id);
